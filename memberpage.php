@@ -23,7 +23,7 @@ require('layout/header.php');
                                   </ul>
                                 </div>
                                 <div id ="ccontent">                                
-                               <h2> Profile Page - Welcome <?php echo $_SESSION['username']; ?></h2>
+                               <h2>Welcome to the Editting Profile Page - Welcome <?php echo $_SESSION['username']; ?></h2>
                                   <?php 
                                    $con=mysqli_connect("sql1.njit.edu","vcc3","4aYwK2YO","vcc3");
                                 // Check connection
@@ -31,8 +31,8 @@ require('layout/header.php');
                                 {
                                 echo "Failed to connect to MySQL: " . mysqli_connect_error();
                                 }
-                                
-                                $result = mysqli_query($con,"SELECT * FROM members WHERE username ='vcc3'");
+                                $user = $_SESSION['username'];
+                                $result = mysqli_query($con,"SELECT * FROM members WHERE username ='$user'");
                                 
                                
                                                                
