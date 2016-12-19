@@ -37,7 +37,7 @@ require('layout/header.php');
                                 <th>Member ID</th>
                                 <th>UserName</th>
                                 <th>Email</th>
-                                <th>Info</th>
+                                
                                 </tr>";
                                 
                                 while($row = mysqli_fetch_array($result))
@@ -46,7 +46,7 @@ require('layout/header.php');
                                 echo "<td>" . $row['memberID'] . "</td>";
                                 echo "<td>" . $row['username'] . "</td>";
                                 echo "<td>" . $row['email'] . "</td>";
-                                echo "<td>" . $row['info'] . "</td>";
+                                
                                 echo "</tr>";
                                 }
                                 echo "</table>";
