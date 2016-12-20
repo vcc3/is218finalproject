@@ -54,7 +54,7 @@ require('layout/header.php');
 
 				if(isset($_GET['action'])){
 
-					//check the action
+					//strategy on actions
 					switch ($_GET['action']) {
 						case 'active':
 							echo "<h2 class='bg-success'>Your account is now active you may now log in.</h2>";
