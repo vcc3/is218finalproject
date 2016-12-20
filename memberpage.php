@@ -39,10 +39,12 @@ require('layout/header.php');
                                                                
                                 while($row = mysqli_fetch_array($result))
                                 {
+                                //strategy to see if pic is empty then set to default else send me the img link
                                 $pic =$_SESSION['profilepic'];
+                                
                                 if(!empty($pic))
                                   { 
-                                  echo "<img width='100px' height='100px' src='img/default.jpg'>";                               						                	
+                                  echo "<img width='100px' height='100px' src='img/pro.jpg'>";                               						                	
                                   echo "<p>Users memberID :"  . $row['memberID'] . "</p>";
                                   echo "<p>Username is :"     . $row['username'] . "</p>";
                                   echo "<p>Users email is :"  . $row['email']    . "</p>";
@@ -50,7 +52,7 @@ require('layout/header.php');
                                   }
                                   else 
                                   {
-                                  echo "<img width='100px' height='100px' src=".$row['profilepic'].">";                               						                	
+                                  echo "<img width='100px' height='100px' src='img/".$row['profilepic']."'>";                               						                	
                                   echo "<p>Users memberID :"  . $row['memberID'] . "</p>";
                                   echo "<p>Username is :"     . $row['username'] . "</p>";
                                   echo "<p>Users email is :"  . $row['email']    . "</p>";
