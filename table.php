@@ -4,7 +4,7 @@
 if(!$user->is_logged_in()){ header('Location: login.php'); } 
 
 //define page title
-$title = 'Members Page';
+$title = 'test ';
 
 //include header template
 require('layout/header.php'); 
@@ -23,36 +23,44 @@ require('layout/header.php');
                                 <div id ="ccontent">
                               	   <p>
                                    <?php 
-                                   $con=mysqli_connect("sql1.njit.edu","vcc3","4aYwK2YO","vcc3");
-                                // Check connection
-                                if (mysqli_connect_errno())
-                                {
-                                echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                                }
-                                
-                                $result = mysqli_query($con,"SELECT * FROM members");
-                                
-                                echo "<table border='1'>
-                                <tr>
-                                <th>Member ID</th>
-                                <th>UserName</th>
-                                <th>Email</th>
-                                
-                                </tr>";
-                                
-                                while($row = mysqli_fetch_array($result))
-                                {
-                                echo "<tr>";
-                                echo "<td>" . $row['memberID'] . "</td>";
-                                echo "<td>" . $row['username'] . "</td>";
-                                echo "<td>" . $row['email'] . "</td>";
-                                
-                                echo "</tr>";
-                                }
-                                echo "</table>";
-                                
-                                mysqli_close($con);
-                                   
+                                  //Get database
+                              $dbs = dbConn::getConnection();
+                              print_r($dbs);
+                              //insert into database with a prepared statement
+                              $stmt = $dbs->query('SELECT memberID, username, email FROM members ');
+                             
+ 		  	                      $array = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+                              function build_table($info){
+                                  // builds table
+                                  $html = '<table>';
+                                  // top rop of table.
+                                  $html .= '<tr>';
+                                  foreach($info[0] as $key=>$value){
+                                          $html .= '<th>' . $key . '</th>';
+                                          //takes firstname , age and height from  array.`as the values.
+                                      }
+                                  $html .= '</tr>';
+                                  // start the body of the table.
+                                  $hmtl .= '<tbody>';
+                                  // rows with information
+                                  foreach( $info as $key=>$value){
+                                      $html .= '<tr>';
+                                      foreach($value as $key2=>$value2){
+                                          $html .= '<td>' . $value2 . '</td>';
+                                      }
+                                      $html .= '</tr>';
+                                  }
+                              
+                                    $hmtl .= '</tbody>';
+                                  // closes table
+                                  $html .= '</table>';
+                                  return $html;
+                              }
+                              
+                              
+                              echo build_table($array);                                                                                    
+                              
+                             
                                    
                                    ?>
                                    </p>
