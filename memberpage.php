@@ -24,6 +24,7 @@ require('layout/header.php');
                                 </div>
                                 <div id ="ccontent">                                
                                <h2>Welcome to the Editting Profile Page - Welcome <?php echo $_SESSION['username']; ?></h2>
+                               
                                   <?php 
                                    $con=mysqli_connect("sql1.njit.edu","vcc3","4aYwK2YO","vcc3");
                                 // Check connection
@@ -38,12 +39,23 @@ require('layout/header.php');
                                                                
                                 while($row = mysqli_fetch_array($result))
                                 {
-                                echo "<img width='100px' height='100px' src=".$row['profilepic'].">";                               						                	
-                                echo "<p> Users memberID :" . $row['memberID'] . "</p>";
-                                echo "<p>Username is :" . $row['username'] . "</p>";
-                                echo "<p>Users email is :" . $row['email']    . "</p>";
-								                echo "<p>Bio:" . $row['info']     . "</p>";
-                              
+                                $pic =$_SESSION['profilepic'];
+                                if(!empty($pic))
+                                  { 
+                                  echo "<img width='100px' height='100px' src='img/default.jpg'>";                               						                	
+                                  echo "<p>Users memberID :"  . $row['memberID'] . "</p>";
+                                  echo "<p>Username is :"     . $row['username'] . "</p>";
+                                  echo "<p>Users email is :"  . $row['email']    . "</p>";
+								                  echo "<p>Bio:"              . $row['info']     . "</p>";                            
+                                  }
+                                  else 
+                                  {
+                                  echo "<img width='100px' height='100px' src=".$row['profilepic'].">";                               						                	
+                                  echo "<p>Users memberID :"  . $row['memberID'] . "</p>";
+                                  echo "<p>Username is :"     . $row['username'] . "</p>";
+                                  echo "<p>Users email is :"  . $row['email']    . "</p>";
+								                  echo "<p>Bio:"              . $row['info']     . "</p>";
+                                  }
                                 }
                             
                                 
