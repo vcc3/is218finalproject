@@ -22,33 +22,36 @@ class User extends Password{
 		    echo '<p class="bg-danger">'.$e->getMessage().'</p>';
 		}
 	}
-    public function get_user_info($username){
+ //trying to get info to send over upload, then upload take sinfo and sends it to update below.
+ 
+    public function getInfo($username){
 		  try {
         //Get database
         $dbs = dbConn::getConnection();
-			  $stmt = $dbs->prepare('SELECT first_name, last_name, memberID,  info, email FROM members WHERE username = :username AND active="Yes" ');
+			  $stmt = $dbs->prepare('SELECT first_name, last_name, age ,info , profilepic FROM members WHERE username = :username AND active="Yes" ');
         $stmt->execute(array('username' => $username));
 		  	return $stmt->fetch();
 		  } catch(PDOException $e) {
 		    echo '<p class="bg-danger">'.$e->getMessage().'</p>';
 		  }
 	  }
-       public function update($first_name, $last_name, $age, $info) {
+       public function update($first_name, $last_name, $age, $info, $profile) {
     try {
       //Get database
       $dbs = dbConn::getConnection();
       //insert into database with a prepared statement
       $user = $_SESSION['username'];
-      $stmt = $dbs->prepare("UPDATE members SET first_name=:first, last_name=:last,  age=:age, info=:info,  WHERE username='$user'");
+      $stmt = $dbs->prepare("UPDATE members SET first_name=:first, last_name=:last,  age=:age, info=:info, profilepic=:profile  WHERE username='$user'");
       $stmt->execute(array(
         ':first' => $first_name,
         ':last' => $last_name,
         ':age' => $age,
-        ':info' => $info      
+        ':info' => $info,
+        ':profile'=>$profile      
       ));
       
-      //redirect to index page
-      header('Location: memberpage.php');
+      //redirect to profile page
+     header('location: memberpage.php');
       exit;
   } catch(PDOException $e) {
       echo '<script>console.log("'.$e->getMessage().'");</script>';
