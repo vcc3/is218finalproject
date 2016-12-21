@@ -12,16 +12,7 @@ $title = 'Edit profile Page';
 require('layout/header.php'); 
 //--------------------------------------------------------
 
- function post(){
-     $user = new User;                                  
-     $first_name = $_POST['first_name'];
-     $last_name = $_POST['last_name'];
-     $age = $_POST['age'];
-     $info = $_POST['info'];    
-     $user->update( $first_name, $last_name, $age, $info);
-            
-            }
-            
+ 
 
 
 
@@ -47,14 +38,15 @@ require('layout/header.php');
                                                               
                                <div id ="phpform">
                                
-                              <form id="edit"  method="post" enctype="multipart/form-data">
+                               <form action="upload.php" method="post" enctype="multipart/form-data"> 
+         
                                 <img width='100px' height='100px' src='img/pro.jpg'>
-                               
-                                <p>First Name:<input type="text" name="first_name" ></p>
+                                <p> <input type="file" name="myFile"></p>
+                                  <p>First Name:<input type="text" name="first_name" ></p>
                                 <p>Last Name: <input type="text" name="last_name" ></p>
                                 <p>Age: <input type="number" name="age"></p>
                                 <p>Bio: <input type="text" name="info" ></p>
-                                <button type="submit">Finish editing</button>
+                                <input type="submit" value="Upload">
                               </form>
                                   
                                 </div>
