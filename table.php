@@ -15,6 +15,9 @@ require('layout/header.php');
                               </div>  
                           	  	<div id="menu">
                                   <ul>
+                                    <li><a href ='lihomepage.php'>Home</a>|</li>                                   
+                                    <li><a href ='#'>About</a>|</li>
+                                    <li><a href ='#'>News</a>|</li>
                                     <li><a href ='memberpage.php'>Profile</a></li>
                                     <li><a href ='logout.php'>LogOut</a></li
                                   </ul>
