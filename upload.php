@@ -1,13 +1,37 @@
-
 <?php
-$target_path = "__DIR__/img/";
 
-$target_path = $target_path . basename( $_FILES['uploadedfile']['name']); 
+define("UPLOAD_DIR",__DIR__."img/");
 
-if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
-    echo "The file ".  basename( $_FILES['uploadedfile']['name']). 
-    " has been uploaded";
-} else{
-    echo "There was an error uploading the file, please try again!";
+if (!empty($_FILES["myFile"])) {
+    $myFile = $_FILES["myFile"];
+
+    if ($myFile["error"] !== UPLOAD_ERR_OK) {
+        echo "<p>An error occurred.</p>";
+        exit;
+    }
+
+    // ensure a safe filename
+    $name = preg_replace("/[^A-Z0-9._-]/i", "_", $myFile["name"]);
+
+    // don't overwrite an existing file
+    $i = 0;
+    $parts = pathinfo($name);
+    while (file_exists(UPLOAD_DIR . $name)) {
+        $i++;
+        $name = $parts["filename"] . "-" . $i . "." . $parts["extension"];
+    }
+
+    // preserve file from temporary directory
+    $success = move_uploaded_file($myFile["tmp_name"],
+        UPLOAD_DIR . $name);
+        echo "saved";
+               
+    if (!$success) { 
+        echo "<p>Unable to save file.</p>";
+        exit;
+    }
+
+    // set proper permissions on the new file
+    chmod(UPLOAD_DIR . $name, 0644);
 }
 ?>
