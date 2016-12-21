@@ -116,7 +116,7 @@ form{
   clear: both;
   height: 480px;
   width: 960px;
-  background-image: url("../img/hero.jpg");
+  background-image: url("../img/hero1.jpg");
   background-size: cover; 
   background-repeat: no-repeat;
   position: relative;
@@ -215,8 +215,8 @@ form{
   background-color: #A47762;
   border:1px solid #000000;
   float: left;
-  width: 317px;
-  height: 280px;
+  width: 320px;
+  height: auto;
   text-align:center;
 }
 
