@@ -89,7 +89,7 @@ require('layout/header.php');
 						}
 					}
 
-					//check the action
+					//check the action detemrine strategy
 					switch ($_GET['action']) {
 						case 'active':
 							echo "<h2 class='bg-success'>Your account is now active you may now log in.</h2>";
