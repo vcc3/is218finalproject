@@ -17,14 +17,18 @@ require('layout/header.php');
                               </div>  
                           	  	<div id="menu">
                                   <ul>
-                                    <li><a href ='table.php'>Table of Users</a>|</li>
-                                    <li><a href ='editprofile.php'>Edit Profile</a>|</li>
+                                    <li><a href ='memberpage.php'>Profile</a></li>
                                     <li><a href ='logout.php'>LogOut</a></li
                                   </ul>
                                 </div>
-                                <div id ="ccontent">                                
+                          <div id ="ccontent">                                
                                <h2>Profile Page - Welcome <?php echo $_SESSION['username']; ?></h2>
-                               
+                              
+                                    <a href ='table.php'>Table of Users</a>|
+                                    <a href ='editprofile.php'>Edit Profile</a>
+                
+                              
+                               <div id ="phpform">
                                   <?php 
                                    $con=mysqli_connect("sql1.njit.edu","vcc3","4aYwK2YO","vcc3");
                                 // Check connection
@@ -43,12 +47,13 @@ require('layout/header.php');
                                
                                   {
                                   echo "<img width='100px' height='100px' src='img/".$row['profilepic']."'>";                              						              
-                                  echo "<p>Users memberID :"  . $row['memberID'] . "</p>";
-                                  echo "<p>Username is :"     . $row['username'] . "</p>";
-                                  echo "<p>Users email is :"  . $row['email']    . "</p>";
-                                  echo "<p>Full Name:"              . $row['fullname']     . "</p>";
-                                  echo "<p>Age:"              . $row['age']     . "</p>";  
-								                  echo "<p>Bio:"              . $row['info']     . "</p>";
+                                  echo "<p>Users memberID :"  . $row['memberID']  . "</p>";
+                                  echo "<p>Username is :"     . $row['username']  . "</p>";
+                                  echo "<p>Users email is :"  . $row['email']     . "</p>";
+                                  echo "<p>First Name:"       . $row['first_name']. "</p>";
+                                  echo "<p>Last Name:"        . $row['last_name'] . "</p>";
+                                  echo "<p>Age:"              . $row['age']       . "</p>";  
+								                  echo "<p>Bio:"              . $row['info']      . "</p>";
                                   }
                                 
                             
@@ -57,8 +62,9 @@ require('layout/header.php');
                                    
                                    
                                    ?>
-   
-                             </div>
+                                </div>
+                                  
+                            </div>
                           </div>
                        </div>
 <?php 

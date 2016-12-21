@@ -15,8 +15,7 @@ require('layout/header.php');
                               </div>  
                           	  	<div id="menu">
                                   <ul>
-                                    <li><a href ='table.php'>Table of Users</a>|</li>
-                                    <li><a href ='memberpage.php'>Profile</a>|</li>
+                                    <li><a href ='memberpage.php'>Profile</a></li>
                                     <li><a href ='logout.php'>LogOut</a></li
                                   </ul>
                                 </div>
@@ -35,9 +34,9 @@ require('layout/header.php');
                                   $html = '<table>';
                                   // top rop of table.
                                   $html .= '<tr>';
-                                  foreach($info[0] as $key=>$value){
-                                          $html .= '<th>' . $key . '</th>';
-                                          //takes firstname , age and height from  array.`as the values.
+                                      foreach($info[0] as $key=>$value){
+                                          $html .= '<th>  <hr>' . $key . '   </th>';
+                                          //takes member id, username and email from database
                                       }
                                   $html .= '</tr>';
                                   // start the body of the table.

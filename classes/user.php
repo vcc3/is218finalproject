@@ -4,10 +4,10 @@ class User extends Password{
 
     private $_db;
 
-    function __construct($db){
+    function __construct($dbs){
     	parent::__construct();
 
-    	$this->_db = $db;
+    	$this->_db = $dbs;
     }
 
 	private function get_user_hash($username){
@@ -23,6 +23,8 @@ class User extends Password{
 		}
 	}
 
+
+
 	public function login($username,$password){
 
 		$row = $this->get_user_hash($username);
@@ -35,6 +37,7 @@ class User extends Password{
 		    return true;
 		}
 	}
+
 
 	public function logout(){
 		session_destroy();
