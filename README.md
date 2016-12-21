@@ -1,4 +1,10 @@
-Login Register
-=============
+victor carlos cornejo
+is218
+ patterns: singleton for connection
+ factory on fetch
+ strategy on get forms
 
-These files acompany the tutorial: [Login and Registration system with PHP](http://daveismyname.com/login-and-registration-system-with-php-bp)# is218finalproject
+ logs in send activation email allows entering upon clicked and activated link.
+  outputs a tables from hw assignments
+  output the info from user in th edatabase of mysql1.njit.edu
+  couldnt get the file upload or post of edit user to work. that is not working 
