@@ -21,17 +21,26 @@ require('layout/header.php');
                                     <li><a href ='#'>News</a>|</li>
                                    
                                   </ul>
-                                </div>
-                          <div id ="ccontent">                                
-                               <h2>Welcome to ******.com</h2>
-                              <p> if you do not have an account click <a href ='signup.php'>Here</a> to sign up for one.</p>
-                              <p> If you do have a account, use the link in menu bar above.</p>
-                                    
-                
-                              
-                              
+                                </div>  <div id = "banner">
                                   
-                            </div>
+                                  
+                                  </div>
+                                  
+                                  <div id= "feature">
+                                    <div id="feature1">
+                                    <h3>Welcome to ******.com</h3>
+                                      <p>HI!</p>
+                                                                                                                         
+                                  </div>
+                                  
+                                  <div id= "feature2">
+                                    <p> if you do not have an account click <a href ='signup.php'>Here</a> to sign up for one.</p>
+                                  </div>
+                                  
+                                  <div id= "feature3">
+                                     <p> If you do have a account, use the link in menu bar above.</p>   
+                                  </div>
+                        
                           </div>
                        </div>
 <?php 
