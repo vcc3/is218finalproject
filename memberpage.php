@@ -42,8 +42,7 @@ require('layout/header.php');
                                 
                                
                                                                
-                                while($row = mysqli_fetch_array($result))
-                                
+                                while($row = mysqli_fetch_array($result))                               
                                
                                   {
                                   echo "<img width='100px' height='100px' src='img/".$row['profilepic']."'>";                              						              
@@ -56,8 +55,7 @@ require('layout/header.php');
 								                  echo "<p>Bio:"              . $row['info']      . "</p>";
                                   }
                                 
-                            
-                                
+                                                            
                                 mysqli_close($con);
                                    
                                    

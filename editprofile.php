@@ -1,5 +1,6 @@
 <?php require('includes/config.php'); 
 
+
 //if not logged in redirect to login page
 if(!$user->is_logged_in()){ header('Location: login.php'); } 
 
@@ -7,37 +8,17 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 $title = 'Edit profile Page';
 
 //include header template
+ 
 require('layout/header.php'); 
 //--------------------------------------------------------
-  function update($oldusername, $first_name, $last_name, $age,$info) {
-    try {
-      //Get database
-      $dbs = dbConn::getConnection();
-      //insert into database with a prepared statement
-      $stmt = $dbs->prepare('UPDATE members SET first_name=:first, last_name=:last, age=:age, info=:info,   WHERE username=:user');
-      $stmt->execute(array(
-        ':first' => $first_name,
-        ':last' => $last_name,
-        ':age' => $age,
-        ':info' => $info,       
-        ':user' => $oldusername
-      ));
-       //redirect to profile page
-    header('Location: memberpage.php');
-      exit;
-  } catch(PDOException $e) {
-		    $error[] = $e->getMessage();
-		}
 
-}
  function post(){
-
-            $oldusername = $_SESSION['username'];                  
-            $first_name = $_POST['first_name'];
-            $last_name = $_POST['last_name'];
-            $age = $_POST['age'];
-            $info = $_POST['info'];    
-            $user->update($oldusername, $first_name, $last_name, $age,  $info);
+     $user = new User;                                  
+     $first_name = $_POST['first_name'];
+     $last_name = $_POST['last_name'];
+     $age = $_POST['age'];
+     $info = $_POST['info'];    
+     $user->update( $first_name, $last_name, $age, $info);
             
             }
             
